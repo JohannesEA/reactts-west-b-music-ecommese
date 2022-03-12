@@ -1,51 +1,19 @@
-import { useState } from "react";
-import StripeCheckout, { Token } from "react-stripe-checkout";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Cart from "./pages/cart/Cart";
+import Home from "./pages/home/Home";
+import GlobalStyles from "./style/globalStyles";
 
-function App() {
-  const [product, setProduct] = useState({
-    name: "React from FB",
-    price: 10,
-    productBy: "Facebook",
-  });
-
-  //Stripe needs http(s)
-  const server_url = "http://localhost:8282/";
-
-  const makePayment = (token: Token) => {
-    const body = {
-      token,
-      product,
-    };
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    return fetch(server_url, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    })
-      .then((response) => {
-        console.log("RESPONSE: ", response);
-        const { status } = response;
-        console.log("STATUS: ", status);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+const App = () => {
   return (
-    <div className="App">
-      <StripeCheckout
-        token={makePayment}
-        stripeKey={process.env.REACT_APP_KEY as string}
-        name="Buy React"
-        amount={product.price * 100}
-      >
-        <button type="submit">Checkout</button>
-      </StripeCheckout>
-    </div>
+    <Router>
+      <GlobalStyles />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<div>Error</div>} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

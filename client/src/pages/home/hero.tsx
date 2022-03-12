@@ -1,7 +1,12 @@
-import React from "react";
+import { LargeButton } from "../../style/Buttons";
+import { HeroWrapper } from "./Home.styles";
 
-const hero = () => {
-  return <div>hero</div>;
+const Hero = () => {
+  return (
+    <HeroWrapper backgroundImg="/assets/images/img2.jpg">
+      <LargeButton>BEATS</LargeButton>
+    </HeroWrapper>
+  );
 };
 
-export default hero;
+export default Hero;
