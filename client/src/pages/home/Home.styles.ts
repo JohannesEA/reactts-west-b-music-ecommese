@@ -13,6 +13,7 @@ export const Wrapper = styled.div<IWrapper>`
   flex-direction: column;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
+  min-height: var(--min-section-height);
 `;
 
 export const HeroWrapper = styled.div<IWrapper>`

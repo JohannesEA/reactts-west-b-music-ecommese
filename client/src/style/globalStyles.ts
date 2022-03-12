@@ -16,8 +16,10 @@ const GlobalStyles = createGlobalStyle`
     --color-text-hover: #fffff0;
     --border-radius: .5em;
     --font-size-large: calc(20px + 0.5rem);
+    --font-size-medium: calc(11px + 0.5rem);
     --line-height: calc(20px + 0.5rem);
     --padding-small: .5em;
+    --padding-extra-small: .2em;
     --min-section-height: 100vh;
     --transition-time: .3s;
 

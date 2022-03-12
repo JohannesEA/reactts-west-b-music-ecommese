@@ -1,5 +1,7 @@
+import { Wrapper } from "./Home.styles";
+
 const WorkProcess = () => {
-  return <div>work-process</div>;
+  return <Wrapper>work-process</Wrapper>;
 };
 
 export default WorkProcess;
