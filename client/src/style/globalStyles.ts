@@ -17,11 +17,15 @@ const GlobalStyles = createGlobalStyle`
     --border-radius: .5em;
     --font-size-large: calc(20px + 0.5rem);
     --font-size-medium: calc(11px + 0.5rem);
+    --font-width: 80%;
     --line-height: calc(20px + 0.5rem);
     --padding-small: .5em;
     --padding-extra-small: .2em;
-    --min-section-height: 100vh;
+    --min-section-height-mobile: 100vh;
+    --min-section-height-ipad: 40em;
+    --min-section-height-pc: 35em;
     --transition-time: .3s;
+    --max-box-width: 25em;
 
   }
   

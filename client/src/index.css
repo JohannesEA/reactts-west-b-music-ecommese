@@ -1,3 +1,5 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 body {
     margin: 0;
     padding: 0;
@@ -5,6 +7,15 @@ body {
     background-color: var(--color-1);
     color: var(--color-text);
     font-family: "Playfair Display", serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    width: var(--font-width);
+    text-align: center;
 }
 
 h1 {
@@ -25,4 +36,26 @@ h4 {
 
 p {
     font-size: calc(11px + 0.5rem);
+}
+
+a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+}
+
+
+/*Imageslider*/
+
+.slick-dots li button:before {
+    color: white !important;
+    font-size: 1rem !important;
+    margin: 1em !important;
+}
+
+.slick-dots li.slick-active button:before {
+    color: white !important;
+    font-size: 1.3rem !important;
+    margin: 0.8em !important;
 }

@@ -1,6 +1,11 @@
 import StripeCheckout, { Token } from "react-stripe-checkout";
+import CartItemBox from "../../components/cart-item-box/CartItemBox";
+import SecondNavbar from "../../components/navbar/SecondNavbar";
+import { CART_PRODUCTS } from "../../development/data";
+import { Wrapper } from "./Cart.styles";
 
 const Cart = () => {
+  const total = 5000;
   const product = {
     name: "React from FB",
     price: 10,
@@ -33,16 +38,31 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <StripeCheckout
-        token={makePayment}
-        stripeKey={process.env.REACT_APP_KEY as string}
-        name="Buy React"
-        amount={product.price * 100}
-      >
-        <button type="submit">Sjekk ut med STRIPE</button>
-      </StripeCheckout>
-    </div>
+    <Wrapper>
+      <SecondNavbar />
+      <h1>Handlekurv</h1>
+      <div className="cart-product-container">
+        {CART_PRODUCTS.map((prod) => (
+          <CartItemBox product={prod} />
+        ))}
+      </div>
+
+      <h3>Total pris: {total} kr</h3>
+      <div className="cart-button-container">
+        <StripeCheckout
+          token={makePayment}
+          stripeKey={process.env.REACT_APP_KEY as string}
+          name="Buy React"
+          amount={product.price * 100}
+        >
+          <button className="button button-stripe" type="submit">
+            STRIPE
+          </button>
+        </StripeCheckout>
+
+        <button className="button button-vipps">VIPPS</button>
+      </div>
+    </Wrapper>
   );
 };
 
