@@ -1,0 +1,12 @@
+/* src/components/ImageSlider.css */
+
+.slide {
+    transform: scale(0.7);
+    transition: transform 300ms;
+    opacity: 0.5;
+}
+
+.slideWrapper {
+    display: flex;
+    justify-content: center;
+}
