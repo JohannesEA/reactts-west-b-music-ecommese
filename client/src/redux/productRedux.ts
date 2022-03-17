@@ -1,27 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { Product } from "../types/Product";
+import { IProduct, ProductAction, ProductActionType } from "./types";
 
-const productSlice = createSlice({
-  name: "product",
-  initialState: {
-    products: [],
-    isFetching: false,
-    error: false,
-  },
-  reducers: {
-    getProductsStart: (state) => {
+const arr: Product[] = [];
+
+const initialState: IProduct = {
+  products: arr,
+  isFetching: false,
+  error: false,
+};
+
+const productReducer = (
+  state: IProduct = initialState,
+  action: ProductAction
+) => {
+  switch (action.type) {
+    case ProductActionType.START:
       state.isFetching = true;
-    },
-    getProductsSuccess: (state, action) => {
+      return state;
+    case ProductActionType.SUCCESS:
       state.isFetching = false;
       state.products = action.payload;
-    },
-    getProductsFailure: (state) => {
+      return state;
+    case ProductActionType.FAILIURE: {
       state.isFetching = false;
       state.error = true;
-    },
-  },
-});
+      return state;
+    }
+  }
+};
 
-export const { getProductsStart, getProductsSuccess, getProductsFailure } =
-  productSlice.actions;
-export default productSlice.reducer;
+export default productReducer;

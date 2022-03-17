@@ -1,39 +1,12 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import thunk from "redux-thunk";
 import productReducer from "./productRedux";
 import cartReducer from "./cartRedux";
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-
-const persistConfig = {
-  key: "root",
-  version: 1,
-  storage,
-};
 
 const rootReducer = combineReducers({
-  product: productReducer,
   cart: cartReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+export const store = createStore(cartReducer, applyMiddleware(thunk));
 
-export const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-});
-
-export let persistor = persistStore(store);
+export type State = ReturnType<typeof cartReducer>;

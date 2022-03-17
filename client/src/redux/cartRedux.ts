@@ -1,20 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { Product } from "../types/Product";
+import { CartAction, CartActioType, ICart } from "./types";
 
-const cartSlice = createSlice({
-  name: "cart",
-  initialState: {
-    products: [],
-    quantity: 0,
-    total: 0,
-  },
-  reducers: {
-    addProduct: (state, action) => {
-      state.quantity += 1; //cart quantity
-      state.products.push(action.payload as never);
-      state.total += action.payload.price * action.payload.quantity; //product quantity
-    },
-  },
-});
+const arr: Product[] = [];
 
-export const { addProduct } = cartSlice.actions;
-export default cartSlice.reducer;
+const initialState: ICart = {
+  products: arr,
+  quantity: 0,
+  total: 0,
+};
+
+const cartReducer = (state: ICart = initialState, action: CartAction) => {
+  switch (action.type) {
+    case CartActioType.ADD:
+      state.products.push(action.payload);
+      state.total += action.payload.price;
+      state.quantity += 1;
+      return state;
+    case CartActioType.REDUCE:
+      const index = state.products.indexOf(action.payload);
+      state.products.splice(index, 1);
+      state.total -= action.payload.price;
+      state.quantity -= 1;
+      return state;
+    case CartActioType.CLEAR: {
+      const empty = (arr: Product[]) => (arr.length = 0);
+      empty(state.products);
+      state.quantity = 0;
+      return state;
+    }
+  }
+};
+
+export default cartReducer;
