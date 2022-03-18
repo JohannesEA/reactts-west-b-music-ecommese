@@ -20,6 +20,10 @@ export const Container = styled.div`
     justify-content: space-between;
     max-width: 10em;
   }
+
+  .cart-logo p {
+    width: 15px;
+  }
 `;
 
 export const animationOne = keyframes`
@@ -43,7 +47,7 @@ export const Menu = styled.div`
     align-items: center;
     margin: 0;
     width: 100%;
-    height: 40vh;
+    height: 100vh;
     position: absolute;
     top: 5em;
     left: auto;
@@ -51,7 +55,11 @@ export const Menu = styled.div`
   }
 `;
 
-export const Menulink = styled.p`
+export const Menulink = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   margin: auto 1.2rem;
   font-size: 1.3rem;
   cursor: pointer;

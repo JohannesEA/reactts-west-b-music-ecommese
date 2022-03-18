@@ -18,7 +18,6 @@ export const getProducts = (products: Product[]) => {
 
 export const addProductToCart = (product: Product) => {
   return (dispatch: Dispatch<CartAction>) => {
-    console.log(product);
     dispatch({
       type: CartActioType.ADD,
       payload: product,

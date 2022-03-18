@@ -1,10 +1,7 @@
-import { Product } from "../types/Product";
 import { IProduct, ProductAction, ProductActionType } from "./types";
 
-const arr: Product[] = [];
-
 const initialState: IProduct = {
-  products: arr,
+  products: [],
   isFetching: false,
   error: false,
 };

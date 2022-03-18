@@ -9,6 +9,9 @@ import {
 import { BsCartPlus } from "react-icons/bs";
 import { Product } from "../../types/Product";
 import { Circle, PlayMusicAnimation } from "../../animations/Animations";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductToCart } from "../../redux/actions";
+import { State } from "../../redux/store";
 
 interface IProductBox {
   clickedItem: Product;
@@ -17,13 +20,18 @@ interface IProductBox {
 }
 
 const ProductBox = ({ margin, clickedItem, addToCart }: IProductBox) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [playing, setPlaying] = useState(false);
   let path = "";
-  const navigate = useNavigate();
 
   const handleNavigateToProductInfo = (item: Product) => {
     path = "/products/" + item._id;
     navigate(path);
+  };
+
+  const handleAddProductToCart = (product: Product) => {
+    dispatch(addProductToCart(product));
   };
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
@@ -62,12 +70,14 @@ const ProductBox = ({ margin, clickedItem, addToCart }: IProductBox) => {
       <p>Pris: {clickedItem.price} NOK</p>
       <div className="producbox-button-container">
         <AiOutlineInfoCircle
+          className="producbox-button"
           fontSize={35}
           onClick={() => handleNavigateToProductInfo(clickedItem)}
         ></AiOutlineInfoCircle>
 
         {!playing ? (
           <AiOutlinePlayCircle
+            className="producbox-button"
             fontSize={35}
             onClick={() => {
               handlePlayPauseSong();
@@ -75,6 +85,7 @@ const ProductBox = ({ margin, clickedItem, addToCart }: IProductBox) => {
           />
         ) : (
           <AiOutlinePauseCircle
+            className="producbox-button"
             fontSize={35}
             onClick={() => {
               handlePlayPauseSong();
@@ -82,7 +93,11 @@ const ProductBox = ({ margin, clickedItem, addToCart }: IProductBox) => {
           />
         )}
 
-        <BsCartPlus onClick={() => addToCart(clickedItem)} fontSize={35} />
+        <BsCartPlus
+          className="producbox-button"
+          onClick={() => handleAddProductToCart(clickedItem)}
+          fontSize={35}
+        />
       </div>
       {playing && (
         <PlayMusicAnimation>

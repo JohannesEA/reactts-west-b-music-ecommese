@@ -10,11 +10,13 @@ import getWindowDimensions from "../../common-functions/Dimentions";
 import { useState } from "react";
 import { Link as DomLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { State } from "../../redux/store";
 
 const SecondNavbar = () => {
   const { width } = getWindowDimensions();
   const [isOpen, setOpen] = useState(false);
-
+  const cartState = useSelector((state: State) => state);
   return (
     <Container id="navbar">
       <DomLink to="/">
@@ -31,9 +33,14 @@ const SecondNavbar = () => {
             color="#fff"
           ></Hamburger>
           <DomLink to="/cart">
-            <MenulinkCart onClick={() => setOpen(!isOpen)}>
+            <Menulink className="cart-logo" onClick={() => setOpen(!isOpen)}>
               <AiOutlineShoppingCart size={25} />
-            </MenulinkCart>
+              {cartState?.quantity > 0 ? (
+                <p style={{ color: "white" }}>{cartState?.quantity}</p>
+              ) : (
+                <p style={{ color: "white" }}>0</p>
+              )}
+            </Menulink>
           </DomLink>
         </div>
       )}
@@ -53,9 +60,14 @@ const SecondNavbar = () => {
             <Menulink onClick={() => setOpen(!isOpen)}>Kontakt</Menulink>
           </DomLink>
           <DomLink to="/cart">
-            <MenulinkCart onClick={() => setOpen(!isOpen)}>
+            <Menulink className="cart-logo" onClick={() => setOpen(!isOpen)}>
               <AiOutlineShoppingCart size={25} />
-            </MenulinkCart>
+              {cartState?.quantity > 0 ? (
+                <p style={{ color: "white" }}>{cartState?.quantity}</p>
+              ) : (
+                <p style={{ color: "white" }}>0</p>
+              )}
+            </Menulink>
           </DomLink>
         </Menu>
       )}

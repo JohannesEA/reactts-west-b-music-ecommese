@@ -1,15 +1,25 @@
 import StripeCheckout, { Token } from "react-stripe-checkout";
 import CartItemBox from "../../components/cart-item-box/CartItemBox";
 import SecondNavbar from "../../components/navbar/SecondNavbar";
-import { CART_PRODUCTS } from "../../development/data";
 import { Wrapper } from "./Cart.styles";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeProductFromCart,
+  deleteAllProductsFromCart,
+} from "../../redux/actions";
+import { State } from "../../redux/store";
+import { Product } from "../../types/Product";
 
 const Cart = () => {
-  const total = 5000;
-  const product = {
-    name: "React from FB",
-    price: 10,
-    productBy: "Facebook",
+  const cartState = useSelector((state: State) => state);
+  const dispatch = useDispatch();
+
+  const handleDeleteProductFromCart = (product: Product) => {
+    dispatch(removeProductFromCart(product));
+  };
+
+  const handleDeleteAllProductsFromCart = () => {
+    dispatch(deleteAllProductsFromCart());
   };
 
   //Stripe needs http(s)
@@ -18,7 +28,7 @@ const Cart = () => {
   const makePayment = async (token: Token): Promise<void> => {
     const body = {
       token,
-      product,
+      cartState,
     };
     const headers = {
       "Content-Type": "application/json",
@@ -41,27 +51,44 @@ const Cart = () => {
     <Wrapper>
       <SecondNavbar />
       <h1>Handlekurv</h1>
-      <div className="cart-product-container">
-        {CART_PRODUCTS.map((prod) => (
-          <CartItemBox product={prod} />
-        ))}
-      </div>
+      {cartState?.quantity > 0 ? (
+        <>
+          <div className="cart-product-container">
+            {cartState.products.map((prod) => (
+              <CartItemBox
+                key={`${prod._id}-${Date.now()}`}
+                product={prod}
+                onDelete={() => handleDeleteProductFromCart(prod)}
+              />
+            ))}
+          </div>
+          <h3>Total pris: {cartState?.total} kr</h3>
+          <div className="cart-button-container">
+            <StripeCheckout
+              token={makePayment}
+              stripeKey={process.env.REACT_APP_KEY as string}
+              name="Buy React"
+              amount={cartState.total * 100}
+            >
+              <button className="button button-stripe" type="submit">
+                STRIPE
+              </button>
+            </StripeCheckout>
 
-      <h3>Total pris: {total} kr</h3>
-      <div className="cart-button-container">
-        <StripeCheckout
-          token={makePayment}
-          stripeKey={process.env.REACT_APP_KEY as string}
-          name="Buy React"
-          amount={product.price * 100}
-        >
-          <button className="button button-stripe" type="submit">
-            STRIPE
+            <button className="button button-vipps">VIPPS</button>
+          </div>
+          <button
+            className="button button-danger"
+            onClick={() => handleDeleteAllProductsFromCart()}
+          >
+            Nullstill handlekurv
           </button>
-        </StripeCheckout>
-
-        <button className="button button-vipps">VIPPS</button>
-      </div>
+        </>
+      ) : (
+        <>
+          <h1>Handlekurv er tom</h1>
+        </>
+      )}
     </Wrapper>
   );
 };

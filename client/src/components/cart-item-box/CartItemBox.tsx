@@ -4,9 +4,10 @@ import { Wrapper } from "./CartItemBox.styles";
 
 interface ICartItemBox {
   product: Product;
+  onDelete: (product: Product) => void;
 }
 
-const CartItemBox = ({ product }: ICartItemBox) => {
+const CartItemBox = ({ product, onDelete }: ICartItemBox) => {
   return (
     <Wrapper>
       <img
@@ -17,7 +18,13 @@ const CartItemBox = ({ product }: ICartItemBox) => {
       <h4>{product.title}</h4>
       <p>Pris: {product.price} kr</p>
 
-      <AiOutlineDelete size={25} color="red" />
+      <AiOutlineDelete
+        onClick={() => {
+          onDelete(product);
+        }}
+        size={25}
+        color="red"
+      />
     </Wrapper>
   );
 };

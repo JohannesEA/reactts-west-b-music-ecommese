@@ -32,5 +32,9 @@ export const Wrapper = styled.div`
     @media (min-width: ${IPAD_WIDTH}px) {
       margin-bottom: 0.5em;
     }
+
+    .producbox-button:hover {
+      color: var(--color-hover);
+    }
   }
 `;

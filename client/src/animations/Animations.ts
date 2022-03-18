@@ -55,7 +55,7 @@ export const rotate2 = keyframes`
   }
 
   50% {
-    background: url("./assets/logos/logo")
+    background: url("/assets/logos/logo.png")
   }
   100% {
     background: linear-gradient(
@@ -111,29 +111,28 @@ export const boxShadowAnimation = keyframes`
 
 export const PlayMusicAnimation = styled.div`
   z-index: 9;
-
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 100%;
+  border-radius: 50%;
   width: 5em;
   height: 5em;
-  margin: 0 auto;
+  margin: 1em auto;
   background: url("/assets/logos/logo.png") no-repeat;
   background-size: contain;
   animation: ${boxShadowAnimation} 2s linear infinite,
-    ${rotate} 2s linear infinite;
+    ${rotate} 4s linear infinite;
 `;
 
 export const Circle = styled.div`
   animation: ${boxShadowAnimation} 2s linear infinite,
-    ${rotate} 2s linear infinite;
+    ${rotate} 10s linear infinite;
   height: 5em;
   width: 5em;
-
-  background-image: url("/assets/logos/logo1.png");
+  background-image: url("/assets/logos/logo.png");
   border-radius: 50%;
+  background-size: contain;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,7 +153,6 @@ export const Circle = styled.div`
     width: 5em;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.6);
-    bottom: -60px;
     z-index: -1;
     filter: blur(10px);
   }
