@@ -5,8 +5,6 @@ import { useState } from "react";
 import { Link } from "react-scroll";
 import { Link as DomLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useSelector } from "react-redux";
-import { State } from "../../redux/store";
 import Badge from "@material-ui/core/Badge";
 
 interface INavbar {

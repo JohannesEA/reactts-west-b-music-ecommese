@@ -122,6 +122,12 @@ export const ProductOverviewWrapper = styled.div`
   width: 90%;
   margin: 0 auto 5em auto;
   min-height: var(--min-section-height-mobile);
+
+  .button-container {
+    text-align: center;
+    width: 100%;
+    margin-top: 4em;
+  }
 `;
 
 export const ContactWrapper = styled.div`

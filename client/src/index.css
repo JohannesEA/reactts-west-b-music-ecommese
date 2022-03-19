@@ -74,11 +74,11 @@ a {
     margin: 10px;
 }
 
-.button-stripe {
+.button-primary {
     background-color: rgba(6, 42, 75, 0.7);
 }
 
-.button-stripe:hover {
+.button-primary:hover {
     background-color: rgba(6, 42, 75, 1);
 }
 

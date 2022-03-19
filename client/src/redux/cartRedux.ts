@@ -31,7 +31,7 @@ const cartReducer = (state: ICart = initialState, action: CartAction) => {
     case CartActioType.REDUCE:
       if (state.quantity > 0) {
         state.products.forEach((element, index) => {
-          if (element == action.payload) delete state.products[index];
+          if (element === action.payload) delete state.products[index];
         });
 
         const myClonedArray: Product[] = [];

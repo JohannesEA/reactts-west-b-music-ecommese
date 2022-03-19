@@ -70,7 +70,7 @@ const Cart = () => {
               name="Buy React"
               amount={cartState.total * 100}
             >
-              <button className="button button-stripe" type="submit">
+              <button className="button button-primary" type="submit">
                 STRIPE
               </button>
             </StripeCheckout>
