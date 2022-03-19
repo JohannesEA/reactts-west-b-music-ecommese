@@ -1,12 +1,12 @@
-import About from "./About";
+import Navbar from "../../components/navbar/Navbar";
 import Hero from "./Hero";
+import About from "./About";
 import WorkProcess from "./WorkProcess";
-import { HOME_CONTENT } from "../../development/data";
 import ProductOverview from "./ProductOverview";
 import Contact from "./Contact";
-import Navbar from "../../components/navbar/Navbar";
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
+import { HOME_CONTENT } from "../../development/data";
 
 const Home = () => {
   const quantity = useSelector((state: State) => state?.quantity);
