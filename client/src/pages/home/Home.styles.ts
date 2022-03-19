@@ -40,7 +40,8 @@ export const AboutWrapper = styled.div<IWrapper>`
 
   @media (min-width: ${IPAD_WIDTH}px) {
     grid-template-columns: 2fr 1fr;
-    min-height: var(--min-section-height-ipad);
+    min-height: 30em;
+    max-height: 35em;
   }
 
   .about-text-and-button-container {
@@ -74,7 +75,8 @@ export const WorkProcessWrapper = styled.div`
   min-height: var(--min-section-height-mobile);
 
   @media (min-width: ${IPAD_WIDTH}px) {
-    min-height: var(--min-section-height-ipad);
+    min-height: 30em;
+    max-height: 35em;
   }
 
   .work-process-center-container {
@@ -83,6 +85,13 @@ export const WorkProcessWrapper = styled.div`
     justify-content: center;
     flex-direction: row;
     text-align: center;
+  }
+
+  .active {
+    border-radius: 0.5em;
+    background-color: var(--color-text-hover);
+    height: 1em;
+    width: 1em;
   }
 `;
 
@@ -93,15 +102,19 @@ export const Circle = styled.h1`
   justify-content: center;
   margin-top: 1em;
   font-size: 1.5rem;
-  height: 1em;
-  width: 1em;
+  height: 0.8em;
+  width: 0.8em;
   color: var(--color-1);
-  border-radius: 100%;
+  border-radius: 50%;
   background-color: var(--color-text);
-  padding: 0.5em;
+  padding: 0.3em;
   &:hover {
     border-radius: 0.5em;
     background-color: var(--color-text-hover);
+  }
+
+  p {
+    margin-bottom: 25px;
   }
 `;
 

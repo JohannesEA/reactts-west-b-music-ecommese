@@ -5,11 +5,17 @@ import { HOME_CONTENT } from "../../development/data";
 import ProductOverview from "./ProductOverview";
 import Contact from "./Contact";
 import Navbar from "../../components/navbar/Navbar";
+import { useSelector } from "react-redux";
+import { State } from "../../redux/store";
+import { useState } from "react";
 
 const Home = () => {
+  const quantity = useSelector((state: State) => state?.quantity);
+  const [localHostQuantity, setLocalHostQuantity] = useState(0);
+
   return (
     <div>
-      <Navbar />
+      <Navbar quantity={quantity} />
       <Hero />
       <About />
       <WorkProcess

@@ -12,21 +12,52 @@ type IWorkProcess = {
 
 const WorkProcess = ({ title, p1, p2, p3, p4 }: IWorkProcess) => {
   const { width } = getWindowDimensions();
-  const [processText, setProcessText] = useState("Trykk på sirklene");
+  const [processText, setProcessText] = useState(p1);
+  const [circleState, setCircleState] = useState({
+    firstStep: true,
+    secondStep: false,
+    thirdStep: false,
+    fourthStep: false,
+  });
+
   const handleFirstStepContent = () => {
     setProcessText(p1);
+    setCircleState({
+      firstStep: true,
+      secondStep: false,
+      thirdStep: false,
+      fourthStep: false,
+    });
   };
 
   const handleSecondStepContent = () => {
     setProcessText(p2);
+    setCircleState({
+      firstStep: false,
+      secondStep: true,
+      thirdStep: false,
+      fourthStep: false,
+    });
   };
 
   const handleThirdStepContent = () => {
     setProcessText(p3);
+    setCircleState({
+      firstStep: false,
+      secondStep: false,
+      thirdStep: true,
+      fourthStep: false,
+    });
   };
 
   const handleFourthStepContent = () => {
     setProcessText(p4);
+    setCircleState({
+      firstStep: false,
+      secondStep: false,
+      thirdStep: false,
+      fourthStep: true,
+    });
   };
   return (
     <WorkProcessWrapper>
@@ -34,37 +65,61 @@ const WorkProcess = ({ title, p1, p2, p3, p4 }: IWorkProcess) => {
       <div className="work-process-center-container">
         {width > 1000 ? (
           <>
-            <Circle onClick={handleFirstStepContent}>
+            <Circle
+              className={circleState.firstStep ? "active" : ""}
+              onClick={handleFirstStepContent}
+            >
               <p>1</p>
             </Circle>{" "}
             ____________________{" "}
-            <Circle onClick={handleSecondStepContent}>
+            <Circle
+              className={circleState.secondStep ? "active" : ""}
+              onClick={handleSecondStepContent}
+            >
               <p>2</p>
             </Circle>{" "}
             ____________________{" "}
-            <Circle onClick={handleThirdStepContent}>
+            <Circle
+              className={circleState.thirdStep ? "active" : ""}
+              onClick={handleThirdStepContent}
+            >
               <p>3</p>
             </Circle>{" "}
             ____________________{" "}
-            <Circle onClick={handleFourthStepContent}>
+            <Circle
+              className={circleState.fourthStep ? "active" : ""}
+              onClick={handleFourthStepContent}
+            >
               <p>4</p>
             </Circle>
           </>
         ) : (
           <>
-            <Circle onClick={handleFirstStepContent}>
+            <Circle
+              className={circleState.firstStep ? "active" : ""}
+              onClick={handleFirstStepContent}
+            >
               <p>1</p>
             </Circle>
             _____
-            <Circle onClick={handleSecondStepContent}>
+            <Circle
+              className={circleState.secondStep ? "active" : ""}
+              onClick={handleSecondStepContent}
+            >
               <p>2</p>
             </Circle>
             _____
-            <Circle onClick={handleThirdStepContent}>
+            <Circle
+              className={circleState.thirdStep ? "active" : ""}
+              onClick={handleThirdStepContent}
+            >
               <p>3</p>
             </Circle>
             _____
-            <Circle onClick={handleFourthStepContent}>
+            <Circle
+              className={circleState.fourthStep ? "active" : ""}
+              onClick={handleFourthStepContent}
+            >
               <p>4</p>
             </Circle>
           </>

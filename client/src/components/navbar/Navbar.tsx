@@ -1,25 +1,21 @@
 import { Container, Menu, Menulink, MenuLogoText } from "./Navbar.styles";
 import { Spiral as Hamburger } from "hamburger-react";
 import getWindowDimensions from "../../common-functions/Dimentions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-scroll";
 import { Link as DomLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
+import Badge from "@material-ui/core/Badge";
 
-const Navbar = () => {
+interface INavbar {
+  quantity: number;
+}
+
+const Navbar = ({ quantity }: INavbar) => {
   const { width } = getWindowDimensions();
   const [isOpen, setOpen] = useState(false);
-  const quantity = useSelector((state: State) => state?.quantity);
-
-  useEffect(() => {
-    const test = () => {
-      console.log(quantity);
-    };
-
-    test();
-  }, []);
 
   return (
     <Container id="navbar">
@@ -38,12 +34,9 @@ const Navbar = () => {
           ></Hamburger>
           <DomLink to="/cart">
             <Menulink className="cart-logo" onClick={() => setOpen(!isOpen)}>
-              <AiOutlineShoppingCart size={25} />
-              {quantity > 0 ? (
-                <p style={{ color: "white" }}>{quantity}</p>
-              ) : (
-                <p style={{ color: "white" }}>0</p>
-              )}
+              <Badge badgeContent={quantity} color="error">
+                <AiOutlineShoppingCart size={25} />
+              </Badge>
             </Menulink>
           </DomLink>
         </div>
@@ -61,7 +54,6 @@ const Navbar = () => {
             offset={-100}
             duration={300}
           >
-            {" "}
             <Menulink onClick={() => setOpen(!isOpen)}>Om</Menulink>
           </Link>
           <DomLink to="/products">
@@ -79,12 +71,9 @@ const Navbar = () => {
 
           <DomLink to="/cart">
             <Menulink className="cart-logo" onClick={() => setOpen(!isOpen)}>
-              <AiOutlineShoppingCart size={25} />
-              {quantity > 0 ? (
-                <p style={{ color: "white" }}>{quantity}</p>
-              ) : (
-                <p style={{ color: "white" }}>0</p>
-              )}
+              <Badge badgeContent={quantity} color="error">
+                <AiOutlineShoppingCart size={25} />
+              </Badge>
             </Menulink>
           </DomLink>
         </Menu>

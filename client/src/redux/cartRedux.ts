@@ -10,43 +10,74 @@ const initialState: ICart = {
 const cartReducer = (state: ICart = initialState, action: CartAction) => {
   switch (action.type) {
     case CartActioType.ADD:
-      if (state.products.some((prod) => prod.title === action.payload.title)) {
-        alert("Produktet er allerede lagt til i handlekurven.");
+      const myClonedArray: Product[] = [];
+      state.products.forEach((val) =>
+        myClonedArray.push(Object.assign({}, val))
+      );
+
+      myClonedArray.push(action.payload);
+
+      const newState: ICart = {
+        products: myClonedArray,
+        quantity: (state.quantity += 1),
+        total: (state.total += action.payload.price),
+      };
+
+      if (newState !== undefined) {
+        return newState;
       } else {
-        state.products.push(action.payload);
-        state.total += action.payload.price;
-        state.quantity += 1;
-        localStorage.setItem("cart-products", JSON.stringify(state.products));
-        localStorage.setItem("cart-quantity", JSON.stringify(state.quantity));
-        localStorage.setItem("cart-total", JSON.stringify(state.total));
+        return state;
       }
-      return state;
     case CartActioType.REDUCE:
       if (state.quantity > 0) {
-        const index = state.products.indexOf(action.payload);
-        state.products.splice(index, 1);
-        state.total -= action.payload.price;
-        state.quantity -= 1;
-        alert(
-          `Produktet ${action.payload.title} blir nå fjernet fra handlekurven.`
+        state.products.forEach((element, index) => {
+          if (element == action.payload) delete state.products[index];
+        });
+
+        const myClonedArray: Product[] = [];
+        state.products.forEach((val) =>
+          myClonedArray.push(Object.assign({}, val))
         );
-        localStorage.setItem("cart-products", JSON.stringify(state.products));
-        localStorage.setItem("cart-quantity", JSON.stringify(state.quantity));
-        localStorage.setItem("cart-total", JSON.stringify(state.total));
+
+        const newState: ICart = {
+          products: myClonedArray,
+          quantity: (state.quantity -= 1),
+          total: (state.total -= action.payload.price),
+        };
+
+        if (newState !== undefined) {
+          return newState;
+        } else {
+          return state;
+        }
       } else {
-        alert("Handlekurven er allerede tom.");
+        alert("Hadlekurven er allerede tom.");
+        return state;
       }
-      return state;
     case CartActioType.CLEAR: {
       const empty = (arr: Product[]) => (arr.length = 0);
       empty(state.products);
       state.quantity = 0;
       state.total = 0;
-      localStorage.setItem("cart-products", JSON.stringify("[]"));
-      localStorage.setItem("cart-quantity", JSON.stringify("0"));
-      localStorage.setItem("cart-total", JSON.stringify("0"));
-      return state;
+
+      const myClonedArray: Product[] = [];
+      state.products.forEach((val) =>
+        myClonedArray.push(Object.assign({}, val))
+      );
+
+      const newState: ICart = {
+        products: myClonedArray,
+        quantity: 0,
+        total: 0,
+      };
+      if (newState !== undefined) {
+        return newState;
+      } else {
+        return state;
+      }
     }
+    default:
+      return state;
   }
 };
 

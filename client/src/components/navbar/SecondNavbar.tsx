@@ -12,6 +12,7 @@ import { Link as DomLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
+import Badge from "@material-ui/core/Badge";
 
 const SecondNavbar = () => {
   const { width } = getWindowDimensions();
@@ -34,12 +35,9 @@ const SecondNavbar = () => {
           ></Hamburger>
           <DomLink to="/cart">
             <Menulink className="cart-logo" onClick={() => setOpen(!isOpen)}>
-              <AiOutlineShoppingCart size={25} />
-              {cartState?.quantity > 0 ? (
-                <p style={{ color: "white" }}>{cartState?.quantity}</p>
-              ) : (
-                <p style={{ color: "white" }}>0</p>
-              )}
+              <Badge badgeContent={cartState?.quantity} color="error">
+                <AiOutlineShoppingCart size={25} />
+              </Badge>
             </Menulink>
           </DomLink>
         </div>
@@ -61,12 +59,9 @@ const SecondNavbar = () => {
           </DomLink>
           <DomLink to="/cart">
             <Menulink className="cart-logo" onClick={() => setOpen(!isOpen)}>
-              <AiOutlineShoppingCart size={25} />
-              {cartState?.quantity > 0 ? (
-                <p style={{ color: "white" }}>{cartState?.quantity}</p>
-              ) : (
-                <p style={{ color: "white" }}>0</p>
-              )}
+              <Badge badgeContent={cartState?.quantity} color="error">
+                <AiOutlineShoppingCart size={25} />
+              </Badge>
             </Menulink>
           </DomLink>
         </Menu>
