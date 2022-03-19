@@ -1,4 +1,4 @@
-import { Circle, WorkProcessWrapper, Wrapper } from "./Home.styles";
+import { Circle, WorkProcessWrapper } from "./Home.styles";
 import getWindowDimensions from "../../common-functions/Dimentions";
 import { useState } from "react";
 

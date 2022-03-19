@@ -1,10 +1,4 @@
-import {
-  Container,
-  Menu,
-  Menulink,
-  MenuLogoText,
-  MenulinkCart,
-} from "./Navbar.styles";
+import { Container, Menu, Menulink, MenuLogoText } from "./Navbar.styles";
 import { Spiral as Hamburger } from "hamburger-react";
 import getWindowDimensions from "../../common-functions/Dimentions";
 import { useState } from "react";

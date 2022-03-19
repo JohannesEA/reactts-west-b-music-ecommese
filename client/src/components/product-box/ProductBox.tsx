@@ -9,9 +9,8 @@ import {
 import { BsCartPlus } from "react-icons/bs";
 import { Product } from "../../types/Product";
 import { Circle, PlayMusicAnimation } from "../../animations/Animations";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../redux/actions";
-import { State } from "../../redux/store";
 
 interface IProductBox {
   clickedItem: Product;
