@@ -2,12 +2,7 @@ import { useState, MouseEvent, ChangeEvent, useEffect } from "react";
 import { send } from "emailjs-com";
 
 //Styles
-import {
-  Wrapper,
-  ContactContainer,
-  ContactInfoContainer,
-  ContactInformastionContainer,
-} from "./Home.styles";
+import { Wrapper, ContactContainer, ContactInfoContainer } from "./Home.styles";
 import { BsFillPhoneFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import {
@@ -17,7 +12,7 @@ import {
   TextArea,
   ErrorMessage,
   ConfirmMessage,
-} from "../../style/forms";
+} from "../../style/Forms";
 
 const Contact = () => {
   const [messageState, setMessageState] = useState({
@@ -143,15 +138,6 @@ const Contact = () => {
   return (
     <Wrapper id="contact">
       <h1>KONTAKT OSS</h1>
-
-      <ContactInformastionContainer>
-        <p>
-          Ønser du en skreddersydd nettside utviklet av svært motiverte og
-          flinke utviklere? Ta kontakt med oss! Vi tar i mot alle hendvendelser
-          og svarer deg så raskt vi kan. Les mer om nettsidene vi tilbyr og
-          bestill nettsiden du ønsker.
-        </p>
-      </ContactInformastionContainer>
 
       <Form>
         <meta

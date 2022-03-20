@@ -1,4 +1,4 @@
-import { HOME_CONTENT, BEATS } from "../../development/data";
+import { HOME_CONTENT, BEATS } from "../../development/Data";
 import { ProductOverviewWrapper } from "./Home.styles";
 import ImageSlider from "../../components/slider/ImageSlider";
 import { Link as DomLink } from "react-router-dom";
@@ -14,7 +14,7 @@ const ProductOverview = () => {
       <div className="button-container">
         <DomLink to="/products">
           <button className="button button-primary">
-            Gå til overikt over alle beats
+            Gå til oversikt over alle beats
           </button>
         </DomLink>
       </div>

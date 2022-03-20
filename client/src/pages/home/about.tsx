@@ -1,5 +1,5 @@
 import { AboutWrapper } from "./Home.styles";
-import { HOME_CONTENT } from "../../development/data";
+import { HOME_CONTENT } from "../../development/Data";
 import { StandardButton } from "../../style/Buttons";
 import useWindowDimensions from "../../common-functions/Dimentions";
 import { IPAD_WIDTH } from "../../utils/ScreenWith";

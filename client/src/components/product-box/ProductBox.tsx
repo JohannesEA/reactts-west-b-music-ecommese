@@ -10,10 +10,10 @@ import { BsCartPlus } from "react-icons/bs";
 import { Product } from "../../types/Product";
 import { Circle, PlayMusicAnimation } from "../../animations/Animations";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart } from "../../redux/actions";
-import { AlertTitles, AlertTypes } from "../alert-boxes/alertText";
-import AlertBox from "../alert-boxes/alertBox";
-import { State } from "../../redux/store";
+import { addProductToCart } from "../../redux/Actions";
+import { AlertTitles, AlertTypes } from "../alert-boxes/AlertText";
+import AlertBox from "../alert-boxes/AlertBox";
+import { State } from "../../redux/Store";
 
 interface IProductBox {
   clickedItem: Product;

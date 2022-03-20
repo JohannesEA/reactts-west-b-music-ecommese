@@ -3,7 +3,7 @@ import Footer from "./components/footer/Footer";
 import Cart from "./pages/cart/Cart";
 import Home from "./pages/home/Home";
 import Error from "./pages/error/Error";
-import GlobalStyles from "./style/globalStyles";
+import GlobalStyles from "./style/GlobalStyles";
 import Products from "./pages/products/Products";
 
 const App = () => {

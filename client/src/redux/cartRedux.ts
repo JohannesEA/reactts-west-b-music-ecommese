@@ -1,5 +1,5 @@
 import { Product } from "../types/Product";
-import { CartAction, CartActioType, ICart } from "./types";
+import { CartAction, CartActioType, ICart } from "./Types";
 
 const initialState: ICart = {
   products: [],

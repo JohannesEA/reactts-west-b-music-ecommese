@@ -6,22 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   removeProductFromCart,
   deleteAllProductsFromCart,
-} from "../../redux/actions";
-import { State } from "../../redux/store";
+} from "../../redux/Actions";
+import { State } from "../../redux/Store";
 import { Product } from "../../types/Product";
-import AlertBox from "../../components/alert-boxes/alertBox";
+import AlertBox from "../../components/alert-boxes/AlertBox";
 import { useState } from "react";
 import {
   AlertTitles,
   AlertTypes,
-} from "../../components/alert-boxes/alertText";
-import { Form, Input, Label } from "../../style/forms";
+} from "../../components/alert-boxes/AlertText";
+import { Form, Input, Label } from "../../style/Forms";
 
 const Cart = () => {
   const cartState = useSelector((state: State) => state);
   const dispatch = useDispatch();
   const [email, setEmail] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
 
   const [showAlert, setShowAlert] = useState({
     show: false,
@@ -72,10 +71,10 @@ const Cart = () => {
         headers: headers,
         body: JSON.stringify(body),
       });
-      console.log("RESPONSE: ", response);
       const { status } = response;
-      console.log("STATUS: ", status);
+      console.log(": ", status);
     } catch (error) {
+      alert("Det har skjedd en feil");
       console.log(error);
     }
   };
@@ -97,9 +96,9 @@ const Cart = () => {
           </div>
           <h3>Total pris: {cartState?.total} kr</h3>
           <p>
-            Du vil bli tilsendt en mail og en melding med en mappe som
-            inneholder én mp3 fil, én wav fil og én .rar fil. Vi bruker{" "}
-            <a href="https://wetransfer.com/">Wetransfer.com</a> som
+            Du vil bli tilsendt en mail med en mappe som inneholder én mp3 fil,
+            én wav fil og én .rar fil. Vi bruker
+            <a href="https://wetransfer.com/"> Wetransfer.com</a> som sikker
             filoverføring.
           </p>
 
@@ -111,36 +110,35 @@ const Cart = () => {
               placeholder="ola-normann@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Label style={{ color: "white" }}>Mobilnummer</Label>
-            <Input
-              name="phonennumber"
-              type="text"
-              placeholder="+47 99509035"
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
 
-            <div className="cart-button-container">
+            <div className="cart-button-container" data-locale="nb">
               <StripeCheckout
                 token={makePayment}
                 stripeKey={process.env.REACT_APP_KEY as string}
-                name="Buy React"
+                name="Betal med stripe"
+                image="/assets/logos/logo.png"
                 amount={cartState.total * 100}
+                currency={"NOK"}
+                email={email}
+                allowRememberMe={true}
+                description="Sikker betaling ved hjelp as stripe.com"
+                data-locale="nb"
               >
                 <button
                   className="button button-primary"
                   type="submit"
                   onClick={(e) => e.preventDefault()}
                 >
-                  STRIPE
+                  Betal med kort
                 </button>
               </StripeCheckout>
 
-              <button
+              {/* <button
                 className="button button-vipps"
                 onClick={(e) => e.preventDefault()}
               >
                 VIPPS
-              </button>
+              </button> */}
             </div>
           </Form>
 

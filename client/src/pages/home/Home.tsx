@@ -5,8 +5,8 @@ import WorkProcess from "./WorkProcess";
 import ProductOverview from "./ProductOverview";
 import Contact from "./Contact";
 import { useSelector } from "react-redux";
-import { State } from "../../redux/store";
-import { HOME_CONTENT } from "../../development/data";
+import { State } from "../../redux/Store";
+import { HOME_CONTENT } from "../../development/Data";
 
 const Home = () => {
   const quantity = useSelector((state: State) => state?.quantity);

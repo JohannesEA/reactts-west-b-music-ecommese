@@ -5,7 +5,7 @@ import {
   CartActioType,
   ProductAction,
   ProductActionType,
-} from "./types";
+} from "./Types";
 
 export const getProducts = (products: Product[]) => {
   return (dispatch: Dispatch<ProductAction>) => {

@@ -9,11 +9,11 @@ app.post("/create-checkout-session", async (req, res) => {
     line_items: [
       {
         price_data: {
-          currency: "usd",
-          product_data: {
-            name: "T-shirt",
-          },
+          currency: "nok",
           unit_amount: 2000,
+        },
+        product_data: {
+          products: req.body.products,
         },
         quantity: 1,
       },
@@ -26,4 +26,4 @@ app.post("/create-checkout-session", async (req, res) => {
   res.redirect(303, session.url);
 });
 
-app.listen(4242, () => console.log(`Listening on port ${535353}!`));
+app.listen(4242, () => console.log(`Listening on port ${4242}!`));

@@ -6,7 +6,7 @@ import axios from "axios";
 
 //Styles
 import { Wrapper, ProductListContainer } from "./ProductList.styles";
-import { Input } from "../../../style/forms";
+import { Input } from "../../../style/Forms";
 
 //types
 import { Product } from "../../../types/Product";

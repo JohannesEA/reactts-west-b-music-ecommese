@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link as DomLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { State } from "../../redux/store";
+import { State } from "../../redux/Store";
 import Badge from "@material-ui/core/Badge";
 
 const SecondNavbar = () => {

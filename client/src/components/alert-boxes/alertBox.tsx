@@ -1,5 +1,5 @@
-import { Wrapper } from "./alertBox.styles";
-import { AlertTypes } from "./alertText";
+import { Wrapper } from "./AlertBox.styles";
+import { AlertTypes } from "./AlertText";
 
 interface IAlertBox {
   type: string;

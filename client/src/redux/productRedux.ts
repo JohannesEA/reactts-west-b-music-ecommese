@@ -1,4 +1,4 @@
-import { IProduct, ProductAction, ProductActionType } from "./types";
+import { IProduct, ProductAction, ProductActionType } from "./Types";
 
 const initialState: IProduct = {
   products: [],
