@@ -1,4 +1,4 @@
-import { HOME_CONTENT, BEATS } from "../../development/Data";
+import { HOME_CONTENT, BEATS } from "../../development/data";
 import { ProductOverviewWrapper } from "./Home.styles";
 import ImageSlider from "../../components/slider/ImageSlider";
 import { Link as DomLink } from "react-router-dom";

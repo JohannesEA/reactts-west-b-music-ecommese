@@ -6,10 +6,10 @@ import axios from "axios";
 
 //Styles
 import { Wrapper, ProductListContainer } from "./ProductList.styles";
-import { Input } from "../../../style/Forms";
+import { Input } from "../../../style/forms";
 
 //types
-import { Product } from "../../../types/Product";
+import { Product } from "../../../types/product";
 import ProductBox from "../../../components/product-box/ProductBox";
 
 type Props = {

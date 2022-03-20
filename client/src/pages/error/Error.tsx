@@ -3,7 +3,7 @@ import { Link as DomLink } from "react-router-dom";
 import { ScrollToTop } from "../../common-functions/Functions";
 //styles
 import { Wrapper } from "./Error.styles";
-import { StandardButton } from "../../style/Buttons";
+import { StandardButton } from "../../style/buttons";
 
 //components
 import SecondNavbar from "../../components/navbar/SecondNavbar";

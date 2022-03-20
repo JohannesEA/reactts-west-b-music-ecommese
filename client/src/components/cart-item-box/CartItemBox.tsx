@@ -4,7 +4,7 @@ import {
   AiOutlinePauseCircle,
   AiOutlinePlayCircle,
 } from "react-icons/ai";
-import { Product } from "../../types/Product";
+import { Product } from "../../types/product";
 import { Wrapper } from "./CartItemBox.styles";
 
 interface ICartItemBox {

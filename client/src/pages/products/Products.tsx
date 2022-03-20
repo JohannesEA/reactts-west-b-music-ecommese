@@ -2,7 +2,7 @@ import { ScrollToTop } from "../../common-functions/Functions";
 import { Wrapper } from "./Products.styles";
 import ProductList from "./productlist/ProductList";
 import SecondNavbar from "../../components/navbar/SecondNavbar";
-import { Product } from "../../types/Product";
+import { Product } from "../../types/product";
 
 type Props = {
   addToCart: (clickedItem: Product) => void;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 // 1.
 import Slider from "react-slick";
-import { Product } from "../../types/Product";
+import { Product } from "../../types/product";
 import ProductBox from "../product-box/ProductBox";
 import "./ImageSlider.css";
 

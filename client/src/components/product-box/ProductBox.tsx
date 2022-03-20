@@ -7,7 +7,7 @@ import {
   AiOutlinePauseCircle,
 } from "react-icons/ai";
 import { BsCartPlus } from "react-icons/bs";
-import { Product } from "../../types/Product";
+import { Product } from "../../types/product";
 import { Circle, PlayMusicAnimation } from "../../animations/Animations";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "../../redux/actions";

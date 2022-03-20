@@ -1,4 +1,4 @@
-import { Product } from "../types/Product";
+import { Product } from "../types/product";
 import { CartAction, CartActioType, ICart } from "./types";
 
 const initialState: ICart = {

@@ -12,7 +12,7 @@ import {
   TextArea,
   ErrorMessage,
   ConfirmMessage,
-} from "../../style/Forms";
+} from "../../style/forms";
 
 const Contact = () => {
   const [messageState, setMessageState] = useState({

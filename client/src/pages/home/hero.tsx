@@ -1,4 +1,4 @@
-import { LargeButton } from "../../style/Buttons";
+import { LargeButton } from "../../style/buttons";
 import { HeroWrapper } from "./Home.styles";
 import { Link } from "react-scroll";
 

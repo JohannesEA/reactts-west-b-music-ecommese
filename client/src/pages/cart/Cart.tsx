@@ -8,13 +8,13 @@ import {
   deleteAllProductsFromCart,
 } from "../../redux/actions";
 import { State } from "../../redux/store";
-import { Product } from "../../types/Product";
+import { Product } from "../../types/product";
 import { useState } from "react";
 import {
   AlertTitles,
   AlertTypes,
 } from "../../components/alert-boxes/AlertText";
-import { Form, Input, Label } from "../../style/Forms";
+import { Form, Input, Label } from "../../style/forms";
 import AlertBox from "../../components/alert-boxes/AlertBox";
 
 const Cart = () => {

@@ -1,4 +1,4 @@
-import { Product } from "../types/Product";
+import { Product } from "../types/product";
 
 export enum CartActioType {
   ADD = "add",

@@ -1,8 +1,8 @@
 import { AboutWrapper } from "./Home.styles";
-import { HOME_CONTENT } from "../../development/Data";
-import { StandardButton } from "../../style/Buttons";
+import { HOME_CONTENT } from "../../development/data";
+import { StandardButton } from "../../style/buttons";
 import useWindowDimensions from "../../common-functions/Dimentions";
-import { IPAD_WIDTH } from "../../utils/ScreenWith";
+import { IPAD_WIDTH } from "../../utils/screenWith";
 
 const About = () => {
   const { width } = useWindowDimensions();

@@ -6,7 +6,7 @@ import ProductOverview from "./ProductOverview";
 import Contact from "./Contact";
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
-import { HOME_CONTENT } from "../../development/Data";
+import { HOME_CONTENT } from "../../development/data";
 
 const Home = () => {
   const quantity = useSelector((state: State) => state?.quantity);

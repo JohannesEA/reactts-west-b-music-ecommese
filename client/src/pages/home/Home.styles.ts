@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IPAD_WIDTH } from "../../utils/ScreenWith";
+import { IPAD_WIDTH } from "../../utils/screenWith";
 
 interface IWrapper {
   backgroundColor?: string;
