@@ -7,7 +7,7 @@ import {
   removeProductFromCart,
   deleteAllProductsFromCart,
 } from "../../redux/Actions";
-import { State } from "../../redux/Store";
+import { State } from "../../redux/store";
 import { Product } from "../../types/Product";
 import { useState } from "react";
 import {

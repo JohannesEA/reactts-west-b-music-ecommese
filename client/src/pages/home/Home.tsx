@@ -5,7 +5,7 @@ import WorkProcess from "./WorkProcess";
 import ProductOverview from "./ProductOverview";
 import Contact from "./Contact";
 import { useSelector } from "react-redux";
-import { State } from "../../redux/Store";
+import { State } from "../../redux/store";
 import { HOME_CONTENT } from "../../development/Data";
 
 const Home = () => {

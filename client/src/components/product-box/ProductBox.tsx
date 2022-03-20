@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "../../redux/Actions";
 import { AlertTitles, AlertTypes } from "../alert-boxes/AlertText";
 import AlertBox from "../alert-boxes/AlertBox";
-import { State } from "../../redux/Store";
+import { State } from "../../redux/store";
 
 interface IProductBox {
   clickedItem: Product;
