@@ -10,24 +10,29 @@ const initialState: ICart = {
 const cartReducer = (state: ICart = initialState, action: CartAction) => {
   switch (action.type) {
     case CartActioType.ADD:
-      const myClonedArray: Product[] = [];
-      state.products.forEach((val) =>
-        myClonedArray.push(Object.assign({}, val))
-      );
-
-      myClonedArray.push(action.payload);
-
-      const newState: ICart = {
-        products: myClonedArray,
-        quantity: (state.quantity += 1),
-        total: (state.total += action.payload.price),
-      };
-
-      if (newState !== undefined) {
-        return newState;
-      } else {
+      if (state.products.find((p) => p._id === action.payload._id)) {
         return state;
+      } else {
+        const myClonedArray: Product[] = [];
+        state.products.forEach((val) =>
+          myClonedArray.push(Object.assign({}, val))
+        );
+
+        myClonedArray.push(action.payload);
+
+        const newState: ICart = {
+          products: myClonedArray,
+          quantity: (state.quantity += 1),
+          total: (state.total += action.payload.price),
+        };
+
+        if (newState !== undefined) {
+          return newState;
+        } else {
+          return state;
+        }
       }
+
     case CartActioType.REDUCE:
       if (state.quantity > 0) {
         state.products.forEach((element, index) => {

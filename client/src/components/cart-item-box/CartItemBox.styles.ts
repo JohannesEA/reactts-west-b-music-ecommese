@@ -24,4 +24,11 @@ export const Wrapper = styled.div`
     max-height: 10em;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+  }
 `;

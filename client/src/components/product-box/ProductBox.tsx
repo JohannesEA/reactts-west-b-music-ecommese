@@ -9,8 +9,11 @@ import {
 import { BsCartPlus } from "react-icons/bs";
 import { Product } from "../../types/Product";
 import { Circle, PlayMusicAnimation } from "../../animations/Animations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "../../redux/actions";
+import { AlertTitles, AlertTypes } from "../alert-boxes/alertText";
+import AlertBox from "../alert-boxes/alertBox";
+import { State } from "../../redux/store";
 
 interface IProductBox {
   clickedItem: Product;
@@ -19,9 +22,15 @@ interface IProductBox {
 }
 
 const ProductBox = ({ margin, clickedItem, addToCart }: IProductBox) => {
+  const cartState = useSelector((state: State) => state);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [playing, setPlaying] = useState(false);
+  const [showAlert, setShowAlert] = useState({
+    show: false,
+    type: "",
+    title: "",
+  });
   let path = "";
 
   const handleNavigateToProductInfo = (item: Product) => {
@@ -30,7 +39,20 @@ const ProductBox = ({ margin, clickedItem, addToCart }: IProductBox) => {
   };
 
   const handleAddProductToCart = (product: Product) => {
-    dispatch(addProductToCart(product));
+    if (cartState.products.find((p) => p._id === product._id)) {
+      setShowAlert({
+        show: true,
+        type: AlertTypes.ERROR,
+        title: AlertTitles.ADD_PROD_ERROR,
+      });
+    } else {
+      setShowAlert({
+        show: true,
+        type: AlertTypes.SUCCESS,
+        title: AlertTitles.ADD_PROD_SUCCESS,
+      });
+      dispatch(addProductToCart(product));
+    }
   };
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
@@ -102,6 +124,14 @@ const ProductBox = ({ margin, clickedItem, addToCart }: IProductBox) => {
         <PlayMusicAnimation>
           <Circle />
         </PlayMusicAnimation>
+      )}
+
+      {showAlert.show && (
+        <AlertBox
+          type={showAlert.type}
+          title={showAlert.title}
+          onClick={() => setShowAlert({ show: false, type: "", title: "" })}
+        />
       )}
     </Wrapper>
   );

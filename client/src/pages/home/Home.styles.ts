@@ -133,9 +133,26 @@ export const ProductOverviewWrapper = styled.div`
 export const ContactWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
-  margin-bottom: 5em;
+  min-height: var(--min-section-height);
+  max-height: 65em;
+  width: min(100%, 100em);
+  margin: var(--margin-xl) auto 0 auto;
+
+  @media (max-width: 600px) {
+    min-height: var(--min-section-height);
+    max-height: 80em;
+    margin-bottom: var(--margin-large);
+  }
+
+  @media (max-width: 350px) {
+    margin-bottom: 50px;
+  }
+
+  .btn-disabled {
+    background-color: gray !important;
+  }
 `;
 
 export const ContactContainer = styled.div`
@@ -144,22 +161,41 @@ export const ContactContainer = styled.div`
   justify-content: space-between;
   flex-direction: row;
   width: 90%;
-  margin: 0 auto;
-  height: 5em;
+  margin: var(--margin-large) auto;
   background-color: var(--color-text);
   color: var(--color-1);
   border-radius: 0.5em 0.5em 0 0;
 
   @media (max-width: 800px) {
     flex-direction: column;
-    margin-bottom: 3em;
   }
 `;
 
+export const ContactInformastionContainer = styled.div`
+  width: 90%;
+  color: var(--color-1);
+  margin-bottom: var(--margin-large);
+`;
+
 export const ContactInfoContainer = styled.div`
+  width: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
-  text-align: center;
+  text-align: flex-start;
+`;
+
+export const ProfileContainer = styled.div`
+  cursor: pointer;
+  bottom: 0;
+  margin: var(--margin-large) auto 0 auto;
+  width: 100%;
+  background-color: var(--color-4);
+  max-height: 400px;
+
+  &:hover {
+    border-radius: 0;
+    background-color: var(--color-4-hover);
+  }
 `;
