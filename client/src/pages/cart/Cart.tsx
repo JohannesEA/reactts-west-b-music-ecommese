@@ -9,13 +9,13 @@ import {
 } from "../../redux/Actions";
 import { State } from "../../redux/Store";
 import { Product } from "../../types/Product";
-import AlertBox from "../../components/alert-boxes/AlertBox";
 import { useState } from "react";
 import {
   AlertTitles,
   AlertTypes,
 } from "../../components/alert-boxes/AlertText";
 import { Form, Input, Label } from "../../style/Forms";
+import AlertBox from "../../components/alert-boxes/AlertBox";
 
 const Cart = () => {
   const cartState = useSelector((state: State) => state);
