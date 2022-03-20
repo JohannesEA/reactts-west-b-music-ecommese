@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   removeProductFromCart,
   deleteAllProductsFromCart,
-} from "../../redux/Actions";
+} from "../../redux/actions";
 import { State } from "../../redux/store";
 import { Product } from "../../types/Product";
 import { useState } from "react";
